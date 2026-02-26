@@ -53,7 +53,7 @@ exporters:
     access_token: "${SPLUNK_INGEST_TOKEN}"
     realm: "${SPLUNK_REALM}"
 
-  logging:
+  debug:
     verbosity: normal
 
 service:
@@ -62,7 +62,7 @@ service:
     traces:
       receivers: [otlp]
       processors: [resource/workshop, batch, resourcedetection]
-      exporters: [otlp_http/splunk, logging]
+      exporters: [otlp_http/splunk, debug]
     metrics:
       receivers: [hostmetrics, prometheus_simple, otlp]
       processors: [resource/workshop, batch, resourcedetection]
